@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANEX × Rixos — получи айфон за бронь тура</title>
+<meta name="description" content="Бронируйте летние туры в Rixos Hotels Египет, регистрируйте номера заявок — и каждую пятницу выигрывайте iPhone 17 Pro и другие призы.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Roboto:wght@400;500;700&family=Manrope:wght@700;800&family=Golos+Text:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============ ТОКЕНЫ (Figma variable_defs) ============ */
+:root{
+  --blue:#3a63f4;          /* BLUE/blue-60-a — основной CTA/акцент */
+  --accent-blue:#486ef4;   /* AccentBlue */
+  --blue-10:#c2e3ff;       /* активная плашка недели */
+  --dark-blue:#06102e;     /* DarkBlue */
+  --ink:#102a4c;           /* тёмно-синий текст дат */
+  --grey-bg:#f5f6f8;       /* GREY/grey-10-b — фон карточек/блоков */
+  --grey-100:#595b65;      /* текст ответов FAQ */
+  --grey-95:#7e8292;       /* дни недели в календаре */
+  --grey-sub:#5b7596;      /* подпись таймера */
+  --faq-q:#13171e;         /* вопросы FAQ */
+  --red:#ed1c24;           /* RED/red-60-a */
+  --white:#fff;
+  --black:#000;
+
+  --r-8:8px; --r-12:12px; --r-14:14px; --r-20:20px; --r-24:24px; --r-32:32px;
+
+  --content:1028px;        /* узкая контент-колонка */
+  --wide:1376px;           /* широкая (split-секции, веер) */
+
+  --ff-display:'Roboto Flex','Roboto',system-ui,sans-serif;
+  --ff-text:'Roboto',system-ui,sans-serif;
+  --ff-num:'Manrope','Roboto',sans-serif;
+
+  --shadow-card:0 10px 24px rgba(157,160,172,.10);
+  --shadow-pop:0 8px 11px rgba(11,63,168,.16);
+}
+
+/* ============ БАЗА ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-text);
+  color:var(--black);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:0}
+
+.container{max-width:var(--wide);margin:0 auto;padding:0 32px}
+
+/* широкий гротеск-заголовок (Roboto Flex ExtraBold, wdth 143) */
+.display{
+  font-family:var(--ff-display);
+  font-weight:800;
+  font-stretch:143%;
+  font-variation-settings:'wght' 800,'wdth' 143,'opsz' 144,'GRAD' 40;
+  line-height:.9;
+  letter-spacing:-.5px;
+}
+
+/* ============ ШАПКА СЕКЦИИ ============ */
+.section{padding:96px 0}
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;margin:0 auto}
+.sec-head .eyebrow{font-family:var(--ff-text);font-weight:400;font-size:24px;line-height:30px;color:var(--black)}
+.sec-title{font-size:clamp(36px,5vw,60px);color:var(--black)}
+.sec-title .blue{color:var(--blue)}
+.sec-sub{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:rgba(0,0,0,.6);max-width:560px}
+
+/* ============ КНОПКИ ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  height:64px;padding:0 48px;border-radius:var(--r-12);
+  font-family:var(--ff-text);font-weight:500;font-size:16px;line-height:22px;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,filter .2s;
+}
+.btn--primary{background:var(--blue);color:var(--white)}
+.btn--primary:hover{filter:brightness(1.06);box-shadow:0 16px 34px rgba(58,99,244,.4)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:900px;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+.hero__bg{position:absolute;inset:0;z-index:0;
+  background:url('assets/figma/hero-bg-sunset.jpg') center 40%/cover no-repeat;
+  will-change:transform}
+.hero__overlay{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(179deg,rgba(0,0,0,.45) 28%,rgba(0,0,0,0) 62%)}
+.hero__fade{position:absolute;left:0;right:0;bottom:0;height:170px;z-index:3;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 92%)}
+
+.hero__lockup{position:relative;z-index:5;display:flex;align-items:center;gap:14px;margin-top:42px}
+.hero__lockup .anex{width:127px}
+.hero__lockup .x{font-family:'Inter','Roboto',sans-serif;font-weight:900;font-size:13px;color:#fff;text-transform:uppercase;letter-spacing:-.5px}
+.hero__lockup .rixos{width:134px}
+
+.hero__content{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:54px 24px 0;width:100%;max-width:1340px;margin:0 auto}
+.hero h1{color:#fff;text-transform:uppercase;font-size:clamp(46px,7.2vw,104px);line-height:.86;
+  text-shadow:0 8px 40px rgba(60,30,10,.35);overflow:hidden}
+.hero h1 .line{display:block;overflow:hidden;white-space:nowrap}
+.hero h1 .line>span{display:inline-block;will-change:transform}
+.hero__sub{margin-top:20px;font-family:var(--ff-text);font-weight:500;font-size:18px;line-height:24px;color:#fff;max-width:530px;
+  text-shadow:0 2px 16px rgba(0,0,0,.3)}
+
+.hero__cta{margin-top:32px;display:flex;flex-direction:column;align-items:center}
+.hero__cta .btn{position:relative;z-index:2}
+.hero__timer{position:relative;z-index:1;margin-top:-16px;display:inline-flex;align-items:flex-end;gap:12px;background:#fff;border-radius:var(--r-12);
+  height:58px;padding:8px 20px 11px;box-shadow:0 9px 14px rgba(11,63,168,.18)}
+.hero__timer .lbl{font-family:var(--ff-text);font-weight:400;font-size:9.5px;letter-spacing:.23px;
+  text-transform:uppercase;color:var(--grey-sub)}
+.hero__timer .clock{font-family:var(--ff-num);font-weight:800;font-size:20px;color:#1763e0;
+  font-variant-numeric:tabular-nums;letter-spacing:.5px}
+
+.hero__phone{position:absolute;z-index:2;left:50%;bottom:-1700px;transform:translateX(-50%);
+  width:960px;height:auto;filter:drop-shadow(0 40px 60px rgba(120,60,20,.45));will-change:transform}
+
+.badge{position:absolute;z-index:5;background:#fff;border-radius:999px;padding:11px 16px;
+  font-family:var(--ff-num);font-weight:800;font-size:20px;color:#1763e0;white-space:nowrap;
+  box-shadow:0 8px 11px rgba(11,63,168,.16)}
+.badge--left{left:max(4%,calc(50% - 580px));bottom:360px;transform:rotate(-7.45deg)}
+.badge--right{right:max(4%,calc(50% - 600px));bottom:250px;transform:rotate(3.79deg)}
+
+/* ============ ПРИЗЫ (веер) ============ */
+.prizes .fan{display:flex;justify-content:center;align-items:flex-start;margin-top:64px}
+.prize{position:relative;width:447px;height:732px;flex:0 0 auto;
+  background:var(--grey-bg);border-radius:var(--r-24);overflow:hidden;box-shadow:var(--shadow-card)}
+.prize__t{position:absolute;left:32px;top:48px;z-index:2;font-family:var(--ff-text);font-weight:700;font-size:32px;line-height:36px;color:var(--black)}
+.prize__d{position:absolute;left:32px;top:96px;z-index:2;font-family:var(--ff-text);font-weight:400;font-size:18px;line-height:24px;color:var(--black);max-width:376px}
+.prize__media{position:absolute;inset:0;z-index:1}
+.prize__media img{position:absolute}
+/* веер: сертификат слева, iPhone в центре, воркшоп справа */
+.prize:nth-child(1){transform:rotate(-6.42deg);margin-top:42px;margin-right:-66px;z-index:1}
+.prize:nth-child(2){z-index:3}
+.prize:nth-child(3){transform:rotate(4.99deg);margin-top:42px;margin-left:-66px;z-index:2}
+/* media раскладка по карточкам */
+.prize--cert img{left:-15%;bottom:0;width:130%}
+.prize--phone .ph{right:-78px;bottom:-26px;height:560px;width:auto}
+.prize--phone .scr{right:10px;bottom:0;width:196px;border-radius:20px;box-shadow:-12px 18px 40px rgba(0,0,0,.18)}
+.prize--work .pyr{left:-7%;bottom:0;width:120%}
+.prize--work .plane{right:44px;top:200px;width:68px;z-index:3}
+.prize--work .trail{right:70px;top:165px;width:230px;opacity:.9}
+
+/* ============ ДВУХКОЛОНОЧНАЯ СЕКЦИЯ (текст слева / медиа справа) ============ */
+.split{display:grid;grid-template-columns:1fr 673px;gap:56px;align-items:center}
+.split--top{align-items:start}
+.split__text{display:flex;flex-direction:column;gap:24px;max-width:520px;padding-top:8px}
+.split__text .eyebrow{font-family:var(--ff-text);font-weight:400;font-size:18px;line-height:24px;color:rgba(0,0,0,.55)}
+.split__text .t{font-size:clamp(40px,4.6vw,60px);color:var(--black)}
+.split__text .s{font-family:var(--ff-text);font-weight:400;font-size:18px;line-height:25px;color:rgba(0,0,0,.6);max-width:340px}
+.split__text .btn{margin-top:8px;align-self:flex-start}
+.split__media{position:relative;width:673px;height:459px;border-radius:var(--r-24);overflow:hidden;
+  background:var(--grey-bg);box-shadow:var(--shadow-card)}
+.split__media>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* Бронируй — плашка лого поверх фото */
+.plate{position:absolute;left:50%;top:36px;transform:translateX(-50%);
+  width:240px;height:84px;border-radius:var(--r-14);background:rgba(245,246,248,.18);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center}
+.plate img{width:168px;height:auto}
+
+/* Регистрируй — карточка «Заявка отправлена» */
+.ticket{position:absolute;left:52px;top:64px;width:300px;border-radius:var(--r-14);
+  background:rgba(255,255,255,.94);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  padding:22px;display:flex;flex-direction:column;gap:16px}
+.ticket__status{font-family:'Golos Text',var(--ff-text);font-weight:500;font-size:24px;letter-spacing:-.5px;color:var(--accent-blue)}
+.ticket__row .k{font-family:var(--ff-text);font-weight:500;font-size:15px;color:rgba(0,0,0,.6)}
+.ticket__row .v{font-family:var(--ff-text);font-weight:700;font-size:24px;color:var(--black);margin-top:2px}
+.ticket__again{align-self:flex-start;background:var(--grey-bg);border-radius:var(--r-12);
+  padding:10px 20px;font-family:var(--ff-text);font-weight:500;font-size:16px;color:var(--black)}
+.ticket__check{position:absolute;left:300px;top:132px;width:56px;height:56px;background:#fff;border-radius:13px;
+  box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center}
+.ticket__check svg{width:28px;height:28px}
+
+/* Ожидай — крупный календарь внутри карточки */
+.calwrap{display:flex;align-items:center;justify-content:center}
+.cal{width:430px;background:#fff;border-radius:26px;padding:22px 22px 26px;
+  box-shadow:0 17px 34px rgba(157,160,172,.18)}
+.cal__title{font-family:var(--ff-text);font-weight:700;font-size:22px;text-align:center;color:#000;margin-bottom:12px}
+.cal__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal__grid .dow{font-family:var(--ff-text);font-weight:400;font-size:15px;color:var(--grey-95);text-align:center;padding:6px 0}
+.cal__grid .dow.we{color:var(--blue)}
+.cal__grid .d{position:relative;font-family:var(--ff-text);font-weight:700;font-size:16px;color:#000;text-align:center;
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.cal__grid .d.empty{visibility:hidden}
+.cal__grid .d.fri::before{content:"";position:absolute;inset:-4px -1px;
+  background:url('assets/figma/circle-1.svg') center/contain no-repeat}
+
+/* ============ ИТОГИ — недели (8 в ряд) ============ */
+.weeks{display:grid;grid-template-columns:repeat(8,1fr);gap:11px;margin-top:64px}
+.week{position:relative;background:var(--grey-bg);border-radius:var(--r-14);padding:14px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
+.week .wk{font-family:var(--ff-text);font-weight:400;font-size:14px;line-height:18px;color:#000}
+.week .dt{font-family:var(--ff-text);font-weight:700;font-size:20px;line-height:24px;color:var(--ink)}
+.week.next{background:var(--blue-10)}
+.week.next::before{content:"ближайший";position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;font-family:var(--ff-num);font-weight:800;font-size:11px;letter-spacing:.5px;
+  text-transform:uppercase;padding:4px 12px;border-radius:13px;white-space:nowrap}
+
+/* ============ FAQ (заголовок слева / аккордеон справа) ============ */
+.faq__grid{display:grid;grid-template-columns:1fr 680px;gap:56px;align-items:start}
+.faq__head{display:flex;flex-direction:column;gap:28px;max-width:430px;padding-top:6px}
+.faq__head .t{font-size:clamp(40px,4.6vw,60px);color:var(--black)}
+.faq__head .t .blue{color:var(--blue)}
+.faq__head .s{font-family:var(--ff-text);font-weight:400;font-size:15px;line-height:22px;color:rgba(0,0,0,.55)}
+.faq__list{border-top:1px solid #eceef2}
+.faq__item{border-bottom:1px solid #eceef2}
+.faq__item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:24px 0;font-family:var(--ff-text);font-weight:500;font-size:24px;line-height:30px;color:var(--faq-q)}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item .ic{position:relative;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:var(--grey-bg);transition:background .2s}
+.faq__item .ic::before,.faq__item .ic::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:2px;
+  background:var(--black);transform:translate(-50%,-50%);transition:transform .25s,opacity .2s}
+.faq__item .ic::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq__item[open] .ic::after{opacity:0}
+.faq__answer{overflow:hidden;color:var(--grey-100);font-size:16px;line-height:22px;font-weight:400}
+.faq__answer .inner{padding:0 0 24px;max-width:594px}
+.faq__answer a{color:var(--blue)}
+
+/* ============ ФИНАЛЬНАЯ ФОРМА (синяя, горизонтальные поля) ============ */
+.reg{padding:0 0 96px}
+.reg__card{position:relative;max-width:var(--wide);margin:0 auto;background:var(--blue);border-radius:var(--r-32);
+  overflow:hidden;padding:64px 56px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.reg__title{color:#fff;font-size:clamp(38px,4.6vw,64px);text-transform:none}
+.reg__sub{margin-top:18px;color:#fff;font-family:var(--ff-text);font-weight:500;font-size:16px;line-height:22px;opacity:.92}
+.reg__fields{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%;margin-top:36px}
+.field{background:#fff;border-radius:var(--r-12);padding:14px 18px;display:flex;flex-direction:column;gap:4px;text-align:left}
+.field label{font-family:var(--ff-text);font-weight:500;font-size:12px;line-height:18px;color:#0d0d0d;opacity:.45}
+.field input{border:0;outline:0;background:transparent;font-family:var(--ff-text);font-weight:700;font-size:20px;line-height:24px;color:#000;width:100%}
+.field input::placeholder{color:#000;opacity:.32;font-weight:700}
+.reg__submit{width:100%;margin-top:12px;height:80px;background:#fff;color:var(--blue);border-radius:var(--r-20);
+  font-family:var(--ff-text);font-weight:500;font-size:18px;transition:filter .2s,box-shadow .25s}
+.reg__submit:hover{box-shadow:0 16px 40px rgba(0,0,0,.18)}
+
+/* ============ ФУТЕР ============ */
+.footer{padding:60px 0 48px;text-align:center}
+.footer__logo{width:150px;margin:0 auto 22px}
+.footer__links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;align-items:center}
+.footer__links a{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:var(--black)}
+.footer__links .sep{color:#c9ced8}
+.footer__note{margin-top:18px;font-family:var(--ff-text);font-size:14px;color:#9aa3b2}
+
+/* ============ АНИМАЦИИ ============ */
+.reveal{opacity:0;transform:translateY(40px)}
+.is-ready .reveal.in{opacity:1;transform:none;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.no-js .reveal,.no-anim .reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ============ АДАПТИВ ============ */
+@media (max-width:1180px){
+  .split,.faq__grid{grid-template-columns:1fr;gap:32px}
+  .split__media{width:100%;max-width:673px}
+  .split__text,.faq__head{max-width:none}
+  .faq__grid{grid-template-columns:1fr}
+  .faq__list{max-width:760px}
+}
+@media (max-width:920px){
+  .section{padding:64px 0}
+  .prizes .fan{flex-direction:column;align-items:center;gap:24px}
+  .prize{transform:none!important;margin:0!important;width:100%;max-width:447px}
+  .weeks{grid-template-columns:repeat(4,1fr);gap:12px}
+  .reg__fields{grid-template-columns:repeat(2,1fr)}
+  .ticket{left:24px}
+  .ticket__check{left:auto;right:24px}
+}
+@media (max-width:560px){
+  .hero{min-height:760px}
+  .badge{font-size:15px;padding:8px 13px}
+  .badge--left{bottom:300px}.badge--right{bottom:210px}
+  .weeks{grid-template-columns:repeat(2,1fr)}
+  .reg__fields{grid-template-columns:1fr}
+  .split__media{height:auto;aspect-ratio:673/459}
+  .reg__card{padding:40px 24px}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="hero">
+  <div class="hero__bg" id="heroBg"></div>
+  <div class="hero__overlay"></div>
+
+  <div class="hero__lockup">
+    <img class="anex" src="assets/figma/logo-anex.svg" alt="ANEX Tour">
+    <span class="x">×</span>
+    <img class="rixos" src="assets/figma/logo-rixos.svg" alt="RIXOS Hotels" style="--fill-0:#fff">
+  </div>
+
+  <div class="hero__content">
+    <h1 class="display">
+      <span class="line"><span>Получи айфон</span></span>
+      <span class="line"><span>за бронь тура</span></span>
+      <span class="line"><span>с Rixos</span></span>
+    </h1>
+    <p class="hero__sub">Бронируйте летние туры в Rixos Hotels Египет, регистрируйте номера заявок — и каждую пятницу выигрывайте призы</p>
+
+    <div class="hero__cta">
+      <button class="btn btn--primary" id="heroBtn" data-scroll="#reg" data-confetti>Зарегистрировать заявку</button>
+      <div class="hero__timer">
+        <span class="lbl" id="timerLbl">До старта конкурса</span>
+        <span class="clock" id="clock">00 : 00 : 00 : 00</span>
+      </div>
+    </div>
+  </div>
+
+  <img class="hero__phone" id="heroPhone" src="assets/figma/hero-iphone-orange.png" alt="iPhone 17 Pro Cosmic Orange">
+  <span class="badge badge--left">8 айфонов на 128ГБ</span>
+  <span class="badge badge--right">и другие призы</span>
+  <div class="hero__fade"></div>
+</header>
+
+<main>
+
+<!-- ===================== ЧТО МОЖНО ВЫИГРАТЬ ===================== -->
+<section class="section prizes">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2 class="sec-title display" style="max-width:665px">Что можно выиграть</h2>
+      <p class="sec-sub">В этом сезоне каждая заявка в Rixos Hotels превращается в билет розыгрыша. Продали больше — больше шансов выиграть</p>
+    </div>
+
+    <div class="fan reveal">
+      <article class="prize prize--cert">
+        <h3 class="prize__t">Сертификат $2500</h3>
+        <p class="prize__d">на покупку тура в Риксос Египет</p>
+        <div class="prize__media"><img src="assets/figma/card-hotel.png" alt=""></div>
+      </article>
+
+      <article class="prize prize--phone">
+        <h3 class="prize__t">iPhone 17 Pro</h3>
+        <p class="prize__d">Айфонов на 128 ГБ</p>
+        <div class="prize__media">
+          <img class="ph" src="assets/figma/card-iphone.png" alt="">
+          <img class="scr" src="assets/figma/card-anex-screen.png" alt="">
+        </div>
+      </article>
+
+      <article class="prize prize--work">
+        <h3 class="prize__t">Воркшоп в Египте</h3>
+        <p class="prize__d">Сертификат на участие в выездном воркшопе в Египет в осенне – зимний сезон 2026 – 2027</p>
+        <div class="prize__media">
+          <img class="pyr" src="assets/figma/card-pyramid.png" alt="">
+          <img class="trail" src="assets/figma/card-plane-trail.svg" alt="">
+          <img class="plane" src="assets/figma/card-airplane.svg" alt="">
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== БРОНИРУЙ В RIXOS ===================== -->
+<section class="section book">
+  <div class="container">
+    <div class="split split--top reveal">
+      <div class="split__text">
+        <span class="eyebrow">Как участвовать</span>
+        <h2 class="t display">Бронируй<br>в RIXOS</h2>
+        <p class="s">Оформляйте летние туры в Rixos Hotels Египет своим туристам — как обычно</p>
+      </div>
+      <div class="split__media" data-reveal-img>
+        <img class="bg" src="assets/figma/book-hotel.jpg" alt="Отель Rixos">
+        <div class="plate"><img src="assets/figma/book-logo-rixos.svg" alt="RIXOS Hotels" style="--fill-0:#fff"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== РЕГИСТРИРУЙ ЗАЯВКИ ===================== -->
+<section class="section register">
+  <div class="container">
+    <div class="split split--top reveal">
+      <div class="split__text">
+        <h2 class="t display">Регистрируй заявки</h2>
+        <p class="s">Вносите номера заявок в форму ниже. Каждая заявка — отдельный билет в розыгрыш</p>
+        <button class="btn btn--primary" data-scroll="#reg">Зарегистрировать заявку</button>
+      </div>
+      <div class="split__media" data-reveal-img>
+        <img class="bg" src="assets/figma/reg-hotel.jpg" alt="Отель Rixos">
+        <div class="ticket">
+          <div class="ticket__status">Заявка отправлена</div>
+          <div class="ticket__row">
+            <div class="k">Агентство</div>
+            <div class="v">Anextour</div>
+          </div>
+          <button class="ticket__again">Зарегистрировать ещё</button>
+        </div>
+        <div class="ticket__check">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 6.5" stroke="#3a63f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ОЖИДАЙ РЕЗУЛЬТАТОВ ===================== -->
+<section class="section await">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split__text">
+        <h2 class="t display">Ожидай результатов</h2>
+        <p class="s">Каждую пятницу разыгрываем 3 приза. Больше продаж — больше шансов</p>
+      </div>
+      <div class="split__media calwrap" data-reveal-img>
+        <div class="cal" id="cal">
+          <div class="cal__title">Июль 2026</div>
+          <div class="cal__grid" id="calGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ИТОГИ — КАЖДУЮ ПЯТНИЦУ ===================== -->
+<section class="section results">
+  <div class="container">
+    <div class="sec-head reveal">
+      <h2 class="sec-title display" style="max-width:980px">Итоги — каждую пятницу</h2>
+      <p class="sec-sub" style="max-width:470px">Каждую пятницу публикуем победителей недели на этой странице и отмечаем партнёров во всех b2b-каналах Anex</p>
+    </div>
+
+    <div class="weeks reveal" id="weeks">
+      <div class="week" data-fri="2026-07-03"><span class="wk">Неделя 1</span><span class="dt">03.07</span></div>
+      <div class="week" data-fri="2026-07-10"><span class="wk">Неделя 2</span><span class="dt">10.07</span></div>
+      <div class="week" data-fri="2026-07-17"><span class="wk">Неделя 3</span><span class="dt">17.07</span></div>
+      <div class="week" data-fri="2026-07-24"><span class="wk">Неделя 4</span><span class="dt">24.07</span></div>
+      <div class="week" data-fri="2026-07-31"><span class="wk">Неделя 5</span><span class="dt">31.07</span></div>
+      <div class="week" data-fri="2026-08-07"><span class="wk">Неделя 6</span><span class="dt">07.08</span></div>
+      <div class="week" data-fri="2026-08-14"><span class="wk">Неделя 7</span><span class="dt">14.08</span></div>
+      <div class="week" data-fri="2026-08-21"><span class="wk">Неделя 8</span><span class="dt">21.08</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section faq">
+  <div class="container">
+    <div class="faq__grid reveal">
+      <div class="faq__head">
+        <h2 class="t display">Ответы на частые <span class="blue">вопросы</span></h2>
+        <p class="s">В розыгрыше участвуют заявки в Rixos Hotels (Египет) за период 01.07 — 31.08.2026. Типы заявок, условия оплаты и аннуляции финализируются организатором (коммерция и дистрибуция Anex). Полные правила розыгрыша — по ссылке в футере</p>
+      </div>
+
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary>Как проходит розыгрыш? Это честно?<span class="ic"></span></summary>
+          <div class="faq__answer"><div class="inner">Каждую пятницу мы случайным образом выбираем победителей среди всех зарегистрированных за неделю заявок. Имена победителей публикуем открыто — на этой странице и в b2b-каналах. <a href="#">Наши b2b-каналы</a></div></div>
+        </details>
+        <details class="faq__item">
+          <summary>Сколько нужно продать, чтобы участвовать?<span class="ic"></span></summary>
+          <div class="faq__answer"><div class="inner">Достаточно одной подтверждённой заявки в Rixos Hotels Египет. Порога нет — участвуют все агенты, кто зарегистрировал хотя бы одну заявку.</div></div>
+        </details>
+        <details class="faq__item">
+          <summary>Больше заявок — больше шансов?<span class="ic"></span></summary>
+          <div class="faq__answer"><div class="inner">Да. Каждая заявка — отдельный билет в розыгрыше, лимита на количество нет. Чем больше продаёте Rixos, тем выше шанс выиграть.</div></div>
+        </details>
+        <details class="faq__item">
+          <summary>Когда и где объявляют победителей?<span class="ic"></span></summary>
+          <div class="faq__answer"><div class="inner">Каждую пятницу в течение конкурса (01.07 — 31.08.2026). Итоги — на этой странице и в b2b-каналах Anex для агентов.</div></div>
+        </details>
+        <details class="faq__item">
+          <summary>Какие заявки участвуют?<span class="ic"></span></summary>
+          <div class="faq__answer"><div class="inner">Заявки в отели Rixos Hotels (Египет), оформленные в период конкурса. Точные типы заявок, условия оплаты и аннуляции уточняются у организатора.</div></div>
+        </details>
+        <details class="faq__item">
+          <summary>Как получить приз?<span class="ic"></span></summary>
+          <div class="faq__answer"><div class="inner">С победителем связывается менеджер Anex и согласует получение. Цвет iPhone согласуем до закупки.</div></div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ФИНАЛЬНАЯ ФОРМА ===================== -->
+<section class="reg" id="reg">
+  <div class="container">
+    <form class="reg__card reveal" id="regForm">
+      <h2 class="reg__title display">Регистрируй заявку в розыгрыше</h2>
+      <p class="reg__sub">Внеси номер заявки на тур в Rixos Египет — и участвуй в ближайшую пятницу</p>
+      <div class="reg__fields">
+        <label class="field"><span>Номер заявки</span><input name="num" placeholder="№" required></label>
+        <label class="field"><span>Отель RIXOS</span><input name="hotel" placeholder="Выберите отель"></label>
+        <label class="field"><span>Агентство</span><input name="agency" placeholder="Название / ID"></label>
+        <label class="field"><span>Город</span><input name="city" placeholder="Москва"></label>
+      </div>
+      <button class="reg__submit" type="submit" data-confetti>Регистрировать заявку</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== ФУТЕР ===================== -->
+<footer class="footer">
+  <div class="container">
+    <img class="footer__logo" src="assets/figma/logo-anex.svg" alt="ANEX Tour">
+    <nav class="footer__links">
+      <a href="#">Правила конкурса</a><span class="sep">·</span>
+      <a href="#">Согласие на обработку ПД</a><span class="sep">·</span>
+      <a href="#">Условия использования материалов</a>
+    </nav>
+    <p class="footer__note">© Anex. Юбилейная страница 30 лет.</p>
+  </div>
+</footer>
+
+<!-- ===================== СКРИПТЫ ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- КАЛЕНДАРЬ: июль 2026 (1 июля = среда), пятницы 3,10,17,24,31 ---------- */
+  (function buildCal(){
+    var grid = document.getElementById('calGrid'); if(!grid) return;
+    var dows = [['ПН',0],['ВТ',0],['СР',0],['ЧТ',0],['ПТ',0],['СБ',1],['ВС',1]];
+    dows.forEach(function(d){ var e=document.createElement('div'); e.className='dow'+(d[1]?' we':''); e.textContent=d[0]; grid.appendChild(e); });
+    var firstCol = 2; // среда (0=ПН)
+    var fri = {3:1,10:1,17:1,24:1,31:1};
+    for(var i=0;i<firstCol;i++){ var em=document.createElement('div'); em.className='d empty'; grid.appendChild(em); }
+    for(var day=1; day<=31; day++){
+      var c=document.createElement('div'); c.className='d'+(fri[day]?' fri':''); c.textContent=day; grid.appendChild(c);
+    }
+  })();
+
+  /* ---------- ТАЙМЕР: до старта 01.07.2026, затем до ближайшей пятницы 18:00 ---------- */
+  (function timer(){
+    var clock=document.getElementById('clock'), lbl=document.getElementById('timerLbl'), weeks=document.getElementById('weeks');
+    if(!clock) return;
+    var start=new Date('2026-07-01T00:00:00');
+    var fridays=['2026-07-03','2026-07-10','2026-07-17','2026-07-24','2026-07-31','2026-08-07','2026-08-14','2026-08-21'].map(function(d){return new Date(d+'T18:00:00');});
+    function pad(n){return (n<10?'0':'')+n;}
+    function target(){
+      var now=new Date();
+      if(now<start) return {d:start,l:'До старта конкурса'};
+      for(var i=0;i<fridays.length;i++) if(fridays[i]>now) return {d:fridays[i],l:'До ближайшего розыгрыша'};
+      return {d:fridays[fridays.length-1],l:'Конкурс завершён'};
+    }
+    function tick(){
+      var t=target(), diff=Math.max(0,t.d-new Date());
+      var s=Math.floor(diff/1000), d=Math.floor(s/86400), h=Math.floor(s%86400/3600), m=Math.floor(s%3600/60), ss=s%60;
+      clock.textContent=pad(d)+' : '+pad(h)+' : '+pad(m)+' : '+pad(ss);
+      lbl.textContent=t.l;
+    }
+    tick(); setInterval(tick,1000);
+    if(weeks){
+      var t=target(), nodes=weeks.querySelectorAll('.week'), done=false;
+      nodes.forEach(function(n){
+        var fd=new Date(n.getAttribute('data-fri')+'T18:00:00');
+        if(!done && fd>=t.d){ n.classList.add('next'); done=true; }
+      });
+      if(!done) nodes[0].classList.add('next');
+    }
+  })();
+
+  /* ---------- FAQ: плавное раскрытие нативного <details> ---------- */
+  document.querySelectorAll('.faq__item').forEach(function(item){
+    var ans=item.querySelector('.faq__answer');
+    if(item.open) ans.style.height='auto';
+    item.querySelector('summary').addEventListener('click',function(e){
+      e.preventDefault();
+      if(item.open){
+        ans.style.height=ans.scrollHeight+'px'; requestAnimationFrame(function(){ ans.style.transition='height .3s ease'; ans.style.height='0px'; });
+        ans.addEventListener('transitionend',function h(){ item.open=false; ans.style.transition=''; ans.removeEventListener('transitionend',h); });
+      } else {
+        item.open=true; ans.style.height='0px'; requestAnimationFrame(function(){ ans.style.transition='height .3s ease'; ans.style.height=ans.scrollHeight+'px'; });
+        ans.addEventListener('transitionend',function h(){ ans.style.height='auto'; ans.style.transition=''; ans.removeEventListener('transitionend',h); });
+      }
+    });
+  });
+
+  /* ---------- CONFETTI ---------- */
+  function boom(){
+    if(typeof confetti!=='function') return;
+    confetti({particleCount:160,spread:80,origin:{y:.6},colors:['#E0823F','#3a63f4','#ed1c24','#fff']});
+    setTimeout(function(){confetti({particleCount:80,angle:60,spread:55,origin:{x:0}});},120);
+    setTimeout(function(){confetti({particleCount:80,angle:120,spread:55,origin:{x:1}});},120);
+  }
+  document.querySelectorAll('[data-confetti]').forEach(function(b){ b.addEventListener('click',function(){ boom(); }); });
+  document.querySelectorAll('[data-scroll]').forEach(function(b){ b.addEventListener('click',function(e){ var el=document.querySelector(b.getAttribute('data-scroll')); if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); } }); });
+
+  /* ---------- ФОРМА ---------- */
+  var form=document.getElementById('regForm');
+  if(form) form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('.reg__submit'); btn.textContent='Заявка отправлена ✓'; btn.style.background='#1b9e4b'; btn.style.color='#fff';
+    boom();
+    setTimeout(function(){ btn.textContent='Регистрировать заявку'; btn.style.background=''; btn.style.color=''; form.reset(); },3500);
+  });
+
+  /* ---------- АНИМАЦИИ GSAP + LENIS ---------- */
+  if(reduce || typeof gsap==='undefined'){ document.body.classList.add('no-anim','is-ready'); return; }
+  document.body.classList.add('is-ready');
+  gsap.registerPlugin(ScrollTrigger);
+
+  if(typeof Lenis!=='undefined'){
+    var lenis=new Lenis({lerp:.1});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(function(t){lenis.raf(t*1000);});
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  // HERO: masked reveal заголовка
+  var tl=gsap.timeline({delay:.15});
+  tl.from('.hero h1 .line>span',{yPercent:120,duration:1.05,stagger:.1,ease:'power4.out'})
+    .from('.hero__sub',{y:24,opacity:0,duration:.7,ease:'power3.out'},'-=.5')
+    .from('.hero__cta',{y:24,opacity:0,duration:.7,ease:'power3.out'},'-=.45')
+    .from('.hero__phone',{y:80,opacity:0,duration:1,ease:'power3.out'},'-=.7')
+    .from('.badge',{scale:.6,opacity:0,duration:.6,stagger:.12,ease:'back.out(1.7)'},'-=.5')
+    .from('.hero__lockup',{y:-16,opacity:0,duration:.6,ease:'power2.out'},'-=1.1');
+
+  // HERO scroll-driven
+  gsap.to('#heroPhone',{yPercent:-12,scale:1.03,rotation:2,ease:'none',
+    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero__content',{y:-80,opacity:.2,ease:'none',
+    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('#heroBg',{yPercent:18,ease:'none',
+    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+
+  // REVEAL секций
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    ScrollTrigger.create({trigger:el,start:'top 84%',once:true,onEnter:function(){el.classList.add('in');}});
+  });
+
+  // CLIP-REVEAL медиа-карточек
+  gsap.utils.toArray('[data-reveal-img]').forEach(function(card){
+    var img=card.querySelector('img.bg');
+    gsap.fromTo(card,{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.1,ease:'power4.inOut',
+      scrollTrigger:{trigger:card,start:'top 82%',once:true}});
+    if(img) gsap.fromTo(img,{scale:1.25},{scale:1,duration:1.4,ease:'power3.out',
+      scrollTrigger:{trigger:card,start:'top 82%',once:true}});
+  });
+
+  // 3D-TILT карточек призов
+  document.querySelectorAll('.prize').forEach(function(c){
+    var rx=gsap.quickTo(c,'rotationX',{duration:.5,ease:'power3'}),
+        ry=gsap.quickTo(c,'rotationY',{duration:.5,ease:'power3'});
+    c.style.transformStyle='preserve-3d';
+    c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();
+      ry(((e.clientX-(r.left+r.width/2))/r.width)*14);
+      rx((-(e.clientY-(r.top+r.height/2))/r.height)*14);});
+    c.addEventListener('mouseleave',function(){rx(0);ry(0);});
+  });
+
+  // MAGNETIC кнопка hero
+  var mb=document.getElementById('heroBtn');
+  if(mb){
+    var xT=gsap.quickTo(mb,'x',{duration:.4,ease:'power3'}), yT=gsap.quickTo(mb,'y',{duration:.4,ease:'power3'});
+    mb.addEventListener('mousemove',function(e){var r=mb.getBoundingClientRect();
+      xT((e.clientX-(r.left+r.width/2))*.4); yT((e.clientY-(r.top+r.height/2))*.5);});
+    mb.addEventListener('mouseleave',function(){xT(0);yT(0);});
+  }
+
+  // КАЛЕНДАРЬ: обводки пятниц «дорисовываются»
+  ScrollTrigger.create({trigger:'.cal',start:'top 82%',once:true,onEnter:function(){
+    gsap.from('.cal__grid .d.fri',{scale:.4,opacity:0,duration:.5,stagger:.12,ease:'back.out(2)'});
+  }});
+})();
+</script>
+</body>
+</html>
