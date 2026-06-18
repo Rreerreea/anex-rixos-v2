@@ -107,12 +107,8 @@ button{font-family:inherit;cursor:pointer;border:0}
 
 .hero__content{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;text-align:center;
   padding:54px 24px 0;width:100%;max-width:1340px;margin:0 auto}
-/* мягкая подложка-затемнение под заголовком — чтобы белый текст читался на закате */
-.hero__content::before{content:"";position:absolute;left:50%;top:-20px;transform:translateX(-50%);
-  width:min(1240px,100%);height:520px;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse 60% 76% at 50% 42%,rgba(14,11,22,.52),rgba(14,11,22,0) 74%)}
 .hero h1{color:#fff;text-transform:uppercase;font-size:clamp(46px,7.2vw,104px);line-height:.94;
-  text-shadow:0 2px 14px rgba(0,0,0,.4);overflow:visible}
+  text-shadow:0 1px 4px rgba(0,0,0,.4);overflow:visible}
 /* padding-top — запас сверху, чтобы бреве у «Й» не срезалось overflow:hidden маски reveal */
 .hero h1 .line{display:block;overflow:hidden;white-space:nowrap;padding-top:.12em;margin-bottom:-.1em}
 .hero h1 .line>span{display:inline-block;will-change:transform}
