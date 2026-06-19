@@ -116,18 +116,19 @@ button{font-family:inherit;cursor:pointer;border:0}
   text-shadow:0 2px 16px rgba(0,0,0,.3)}
 
 .hero__cta{margin-top:32px;display:flex;flex-direction:column;align-items:center}
-.hero__cta .btn{position:relative;z-index:2;height:76px;min-width:496px;padding:0 56px;font-size:21px;border-radius:20px}
+.hero__cta .btn{position:relative;z-index:2;height:64px;min-width:323px;padding:0 38px;font-size:18px;border-radius:18px}
 /* таймер — меньше и заходит ЗА кнопку (кнопка z2 перекрывает верх пилюли) */
 /* таймер — по ширине ýже кнопки, заходит ЗА кнопку снизу; лейбл слева, цифры справа (как Figma) */
-.hero__timer{position:relative;z-index:1;margin-top:-28px;width:460px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;border-radius:20px;
-  padding:20px 26px 10px;box-shadow:0 9px 14px rgba(11,63,168,.18)}
-.hero__timer .lbl{flex:0 0 auto;white-space:nowrap;font-family:var(--ff-text);font-weight:600;font-size:11px;letter-spacing:.3px;
+/* таймер 273×54 по Figma — заходит ЗА кнопку (323×64) снизу */
+.hero__timer{position:relative;z-index:1;margin-top:-16px;width:273px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff;border-radius:15px;
+  padding:14px 16px 7px;box-shadow:0 9px 14px rgba(11,63,168,.18)}
+.hero__timer .lbl{flex:0 0 auto;white-space:nowrap;font-family:var(--ff-text);font-weight:600;font-size:8.5px;letter-spacing:.2px;
   text-transform:uppercase;color:var(--grey-sub)}
-.hero__timer .clock{white-space:nowrap;font-family:var(--ff-num);font-weight:800;font-size:26px;color:#1763e0;
-  font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.hero__timer .clock{white-space:nowrap;font-family:var(--ff-num);font-weight:800;font-size:18px;color:#1763e0;
+  font-variant-numeric:tabular-nums;letter-spacing:.2px}
 
-.hero__phone{position:absolute;z-index:2;left:50%;bottom:-950px;transform:translateX(-50%);
-  width:620px;height:auto;filter:drop-shadow(0 40px 60px rgba(120,60,20,.45));will-change:transform}
+.hero__phone{position:absolute;z-index:2;left:50%;bottom:-800px;transform:translateX(-50%);
+  width:520px;height:auto;filter:drop-shadow(0 40px 60px rgba(120,60,20,.45));will-change:transform}
 
 .badge{position:absolute;z-index:5;background:#fff;border-radius:999px;padding:11px 16px;
   font-family:var(--ff-num);font-weight:800;font-size:20px;color:#1763e0;white-space:nowrap;
@@ -147,7 +148,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 .prize:nth-child(2){z-index:3}
 .prize:nth-child(3){transform:rotate(4.99deg);margin-top:42px;margin-left:-66px;z-index:2}
 /* media раскладка по карточкам */
-.prize--cert img{left:-8%;bottom:0;width:118%}
+.prize--cert img{left:-8%;bottom:0;width:118%;transform:scaleX(-1)}
 .prize--work .pyr{left:-7%;bottom:0;width:116%}
 .prize--work .plane{right:38px;top:150px;width:60px;z-index:3}
 .prize--work .trail{right:60px;top:120px;width:200px;opacity:.9}
@@ -251,8 +252,9 @@ button{font-family:inherit;cursor:pointer;border:0}
 .footer__note{margin-top:18px;font-family:var(--ff-text);font-size:14px;color:#9aa3b2}
 
 /* ============ АНИМАЦИИ (reveal по умолчанию скрыт) ============ */
-.reveal{opacity:0;transform:translateY(40px)}
-.is-ready .reveal.in{opacity:1;transform:none;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+/* наплывание: fade + лёгкое приближение (без выезда снизу) */
+.reveal{opacity:0;transform:scale(.965)}
+.is-ready .reveal.in{opacity:1;transform:none;transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
 /* если JS/GSAP не сработал — показать всё */
 .no-js .reveal,.no-anim .reveal{opacity:1;transform:none}
 
@@ -640,6 +642,10 @@ button{font-family:inherit;cursor:pointer;border:0}
   // failsafe: гарантируем видимость hero, даже если анимация не доиграла
   setTimeout(function(){gsap.set('.hero__sub,.hero__cta,.hero__phone,.badge,.hero__lockup',{opacity:1,y:0,scale:1,clearProps:'opacity,transform'});},2600);
 
+  // плашки-бейджи: мягко плавают туда-сюда (несинхронно, после появления)
+  gsap.to('.badge--left',{y:-11,rotation:'-=2.5',duration:2.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:2.7});
+  gsap.to('.badge--right',{y:-9,rotation:'+=2.5',duration:2.9,ease:'sine.inOut',yoyo:true,repeat:-1,delay:2.7});
+
   // HERO scroll-driven: айфон уезжает вверх+растёт+поворот, текст уходит, фон parallax
   gsap.to('#heroPhone',{yPercent:-12,scale:1.03,rotation:2,ease:'none',
     scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
@@ -656,10 +662,10 @@ button{font-family:inherit;cursor:pointer;border:0}
   // CLIP-REVEAL больших фото (шторка снизу + лёгкий зум)
   gsap.utils.toArray('[data-reveal-img]').forEach(function(card){
     var img=card.querySelector('img.bg');
-    gsap.fromTo(card,{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.1,ease:'power4.inOut',
-      scrollTrigger:{trigger:card,start:'top 78%',once:true}});
-    if(img) gsap.fromTo(img,{scale:1.25},{scale:1,duration:1.4,ease:'power3.out',
-      scrollTrigger:{trigger:card,start:'top 78%',once:true}});
+    gsap.fromTo(card,{opacity:0,scale:.94},{opacity:1,scale:1,duration:1.1,ease:'power3.out',
+      scrollTrigger:{trigger:card,start:'top 82%',once:true}});
+    if(img) gsap.fromTo(img,{scale:1.12},{scale:1,duration:1.5,ease:'power3.out',
+      scrollTrigger:{trigger:card,start:'top 82%',once:true}});
   });
 
   // 3D-TILT карточек призов
