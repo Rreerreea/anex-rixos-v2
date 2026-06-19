@@ -120,9 +120,9 @@ button{font-family:inherit;cursor:pointer;border:0}
 /* таймер — меньше и заходит ЗА кнопку (кнопка z2 перекрывает верх пилюли) */
 /* таймер — по ширине ýже кнопки, заходит ЗА кнопку снизу; лейбл слева, цифры справа (как Figma) */
 /* таймер 273×54 по Figma — заходит ЗА кнопку (323×64) снизу */
-.hero__timer{position:relative;z-index:1;margin-top:-16px;width:273px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff;border-radius:15px;
-  padding:14px 16px 7px;box-shadow:0 9px 14px rgba(11,63,168,.18)}
-.hero__timer .lbl{flex:0 0 auto;white-space:nowrap;font-family:var(--ff-text);font-weight:600;font-size:8.5px;letter-spacing:.2px;
+.hero__timer{position:relative;z-index:1;margin-top:-16px;width:277px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fff;border-radius:15px;
+  padding:16px 16px 5px;box-shadow:0 9px 14px rgba(11,63,168,.18)}
+.hero__timer .lbl{flex:0 0 auto;position:relative;top:1px;white-space:nowrap;font-family:var(--ff-text);font-weight:600;font-size:9.5px;letter-spacing:.2px;
   text-transform:uppercase;color:var(--grey-sub)}
 .hero__timer .clock{white-space:nowrap;font-family:var(--ff-num);font-weight:800;font-size:18px;color:#1763e0;
   font-variant-numeric:tabular-nums;letter-spacing:.2px}
@@ -144,16 +144,16 @@ button{font-family:inherit;cursor:pointer;border:0}
 .prize__d{position:absolute;left:31px;top:96px;z-index:2;font-family:var(--ff-text);font-weight:400;font-size:18px;line-height:24px;color:var(--black);max-width:372px}
 .prize__media{position:absolute;left:0;right:0;bottom:0;top:0;z-index:1}
 .prize__media img{position:absolute}
-.prize:nth-child(1){transform:rotate(-6.42deg);margin-top:42px;margin-right:-66px;z-index:1}
-.prize:nth-child(2){z-index:3}
-.prize:nth-child(3){transform:rotate(4.99deg);margin-top:42px;margin-left:-66px;z-index:2}
+/* лесенка по высоте: левая ниже всех → центр выше → правая выше всех */
+.prize:nth-child(1){transform:rotate(-6.42deg);margin-top:56px;margin-right:-66px;z-index:1}
+.prize:nth-child(2){margin-top:28px;z-index:3}
+.prize:nth-child(3){transform:rotate(4.99deg);margin-top:42px;margin-left:-66px;z-index:4}
 /* media раскладка по карточкам */
-.prize--cert img{left:-8%;bottom:0;width:118%;transform:scaleX(-1)}
-.prize--work .pyr{left:-7%;bottom:0;width:116%}
-.prize--work .plane{right:38px;top:150px;width:60px;z-index:3}
-.prize--work .trail{right:60px;top:120px;width:200px;opacity:.9}
-.prize--phone .ph{right:-70px;bottom:-20px;height:430px;width:auto}
-.prize--phone .scr{right:8px;bottom:0;width:175px;border-radius:18px;box-shadow:-12px 18px 40px rgba(0,0,0,.18)}
+.prize--cert img{left:-1%;bottom:0;width:118%;transform:scaleX(-1)}
+.prize--work .pyr{left:-7%;bottom:0;width:116%;transform:scaleX(-1)}
+.prize--work .plane{left:198px;top:237px;width:60px;z-index:3;transform:rotate(98.75deg)}
+.prize--work .trail{left:-153px;top:185px;width:361px;opacity:.9;transform:rotate(17.95deg)}
+.prize--phone .ph{left:auto;right:-46px;transform:none;bottom:-20px;width:500px;height:auto}
 
 /* ============ БЛОК С БОЛЬШИМ ФОТО ============ */
 .media-card{position:relative;height:640px;border-radius:var(--r-32);overflow:hidden;margin-top:64px;background:var(--grey-bg)}
@@ -166,17 +166,20 @@ button{font-family:inherit;cursor:pointer;border:0}
 .book .plate svg{width:196px;height:auto}
 
 /* Регистрируй — CTA + карточка «Заявка отправлена» */
-.register__cta{margin-top:64px}
+.register__cta{margin-top:20px}
 .register .media-card{margin-top:40px}
-.ticket{position:absolute;left:72px;top:72px;width:316px;border-radius:var(--r-14);
+.register .media-card>img.bg{object-position:50% 80%}
+.ticket{position:absolute;left:64px;width:316px;border-radius:var(--r-14);
   background:rgba(255,255,255,.92);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
   padding:24px;display:flex;flex-direction:column;gap:18px}
+.ticket--status{top:60px;padding:20px 26px}
+.ticket--agency{top:250px}
 .ticket__status{font-family:'Golos Text',var(--ff-text);font-weight:500;font-size:26px;letter-spacing:-.5px;color:var(--accent-blue)}
 .ticket__row .k{font-family:var(--ff-text);font-weight:500;font-size:16px;color:rgba(0,0,0,.6)}
 .ticket__row .v{font-family:var(--ff-text);font-weight:700;font-size:26px;color:var(--black);margin-top:2px}
 .ticket__again{align-self:flex-start;background:var(--grey-bg);border-radius:var(--r-14);
   padding:11px 22px;font-family:var(--ff-text);font-weight:500;font-size:18px;color:var(--black)}
-.ticket__check{position:absolute;left:332px;top:150px;width:62px;height:62px;background:#fff;border-radius:13px;
+.ticket__check{position:absolute;left:348px;top:266px;width:62px;height:62px;background:#fff;border-radius:13px;
   box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center}
 .ticket__check svg{width:30px;height:30px}
 
@@ -184,9 +187,9 @@ button{font-family:inherit;cursor:pointer;border:0}
 /* сцена расширена до 1028px (как в Figma) компенсацией padding контейнера → координаты 1:1 */
 .await .stage{position:relative;height:640px;border-radius:var(--r-32);overflow:hidden;margin-top:64px;
   margin-left:-24px;margin-right:-24px;background:var(--grey-bg);box-shadow:var(--shadow-card)}
-.await .phone{position:absolute;left:94px;top:83px;width:474px;transform:rotate(-3.68deg);filter:drop-shadow(0 30px 50px rgba(60,70,90,.22))}
+.await .phone{position:absolute;left:94px;top:52px;width:300px;transform:rotate(-3.68deg);filter:drop-shadow(0 30px 50px rgba(60,70,90,.22))}
 .await .phone .frame{display:block;width:100%}
-.await .rec{position:absolute;left:269px;top:169px;background:var(--red);color:#fff;font-family:var(--ff-num);font-weight:700;
+.await .rec{position:absolute;left:178px;top:128px;background:var(--red);color:#fff;font-family:var(--ff-num);font-weight:700;
   font-size:12px;letter-spacing:.2px;padding:4px 9px;border-radius:5px;transform:rotate(-3.68deg)}
 .cal{position:absolute;right:94px;top:244px;width:460px;background:#fefefe;border-radius:30px;padding:19px;
   transform:rotate(5deg) skewX(1deg);box-shadow:0 17px 19px rgba(157,160,172,.12)}
@@ -359,8 +362,7 @@ button{font-family:inherit;cursor:pointer;border:0}
         <h3 class="prize__t">iPhone 17 Pro</h3>
         <p class="prize__d">Айфонов на 128 ГБ</p>
         <div class="prize__media">
-          <img class="ph" src="assets/figma/card-iphone.png" alt="">
-          <img class="scr" src="assets/figma/card-anex-screen.png" alt="">
+          <img class="ph" src="assets/figma/card-iphone-anex.png" alt="">
         </div>
       </article>
     </div>
@@ -398,8 +400,10 @@ button{font-family:inherit;cursor:pointer;border:0}
 
     <div class="media-card reveal" data-reveal-img>
       <img class="bg" src="assets/figma/reg-hotel.jpg" alt="Отель Rixos">
-      <div class="ticket">
+      <div class="ticket ticket--status">
         <div class="ticket__status">Заявка отправлена</div>
+      </div>
+      <div class="ticket ticket--agency">
         <div class="ticket__row">
           <div class="k">Агентство</div>
           <div class="v">Anextour</div>
@@ -425,7 +429,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 
     <div class="stage reveal">
       <div class="phone">
-        <img class="frame" src="assets/figma/await-iphone-figma.png" alt="">
+        <img class="frame" src="assets/figma/await-iphone-new.png" alt="">
       </div>
       <span class="rec">00:00:07</span>
       <div class="cal" id="cal">
@@ -659,6 +663,10 @@ button{font-family:inherit;cursor:pointer;border:0}
     ScrollTrigger.create({trigger:el,start:'top 84%',once:true,onEnter:function(){el.classList.add('in');}});
   });
 
+  // карточки призов: наплывание по очереди (fade, не трогаем наклон веера)
+  gsap.from('.prize',{opacity:0,duration:1,stagger:.15,ease:'power2.out',
+    scrollTrigger:{trigger:'.fan',start:'top 82%',once:true}});
+
   // CLIP-REVEAL больших фото (шторка снизу + лёгкий зум)
   gsap.utils.toArray('[data-reveal-img]').forEach(function(card){
     var img=card.querySelector('img.bg');
@@ -680,14 +688,7 @@ button{font-family:inherit;cursor:pointer;border:0}
     c.addEventListener('mouseleave',function(){rx(0);ry(0);});
   });
 
-  // MAGNETIC кнопка hero
-  var mb=document.getElementById('heroBtn');
-  if(mb){
-    var xT=gsap.quickTo(mb,'x',{duration:.4,ease:'power3'}), yT=gsap.quickTo(mb,'y',{duration:.4,ease:'power3'});
-    mb.addEventListener('mousemove',function(e){var r=mb.getBoundingClientRect();
-      xT((e.clientX-(r.left+r.width/2))*.4); yT((e.clientY-(r.top+r.height/2))*.5);});
-    mb.addEventListener('mouseleave',function(){xT(0);yT(0);});
-  }
+  // (magnetic-эффект кнопки hero убран по просьбе)
 
   // КАЛЕНДАРЬ: обводки пятниц «дорисовываются»
   ScrollTrigger.create({trigger:'.cal',start:'top 80%',once:true,onEnter:function(){
