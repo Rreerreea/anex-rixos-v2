@@ -169,17 +169,16 @@ button{font-family:inherit;cursor:pointer;border:0}
 .register__cta{margin-top:20px}
 .register .media-card{margin-top:40px}
 .register .media-card>img.bg{object-position:50% 80%}
-.ticket{position:absolute;left:64px;width:316px;border-radius:var(--r-14);
+.ticket{position:absolute;left:64px;top:60px;width:316px;height:296px;border-radius:var(--r-14);
   background:rgba(255,255,255,.92);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-  padding:24px;display:flex;flex-direction:column;gap:18px}
-.ticket--status{top:60px;padding:18px 28px;display:block}
-.ticket--agency{top:244px;gap:14px}
+  padding:26px 28px;display:flex;flex-direction:column;justify-content:space-between}
+.ticket__agency{display:flex;flex-direction:column;gap:14px}
 .ticket__status{font-family:'Golos Text',var(--ff-text);font-weight:500;font-size:26px;letter-spacing:-.5px;color:var(--accent-blue)}
 .ticket__row .k{font-family:var(--ff-text);font-weight:500;font-size:16px;color:rgba(0,0,0,.6)}
 .ticket__row .v{font-family:var(--ff-text);font-weight:700;font-size:26px;color:var(--black);margin-top:2px}
 .ticket__again{align-self:flex-start;background:var(--grey-bg);border-radius:var(--r-14);
   padding:11px 22px;font-family:var(--ff-text);font-weight:500;font-size:18px;color:var(--black)}
-.ticket__check{position:absolute;left:348px;top:256px;width:62px;height:62px;background:#fff;border-radius:13px;
+.ticket__check{position:absolute;left:348px;top:220px;width:62px;height:62px;background:#fff;border-radius:13px;
   box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center}
 .ticket__check svg{width:30px;height:30px}
 
@@ -187,7 +186,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 /* сцена расширена до 1028px (как в Figma) компенсацией padding контейнера → координаты 1:1 */
 .await .stage{position:relative;height:640px;border-radius:var(--r-32);overflow:hidden;margin-top:64px;
   margin-left:-24px;margin-right:-24px;background:var(--grey-bg);box-shadow:var(--shadow-card)}
-.await .phone{position:absolute;left:88px;top:22px;width:320px;transform:rotate(-2deg);filter:drop-shadow(0 30px 50px rgba(60,70,90,.22))}
+.await .phone{position:absolute;left:80px;top:40px;width:410px;transform:rotate(-2deg);filter:drop-shadow(0 30px 50px rgba(60,70,90,.22))}
 .await .phone .frame{display:block;width:100%}
 .await .rec{position:absolute;left:178px;top:128px;background:var(--red);color:#fff;font-family:var(--ff-num);font-weight:700;
   font-size:12px;letter-spacing:.2px;padding:4px 9px;border-radius:5px;transform:rotate(-3.68deg)}
@@ -400,15 +399,15 @@ button{font-family:inherit;cursor:pointer;border:0}
 
     <div class="media-card reveal" data-reveal-img>
       <img class="bg" src="assets/figma/reg-hotel.jpg" alt="Отель Rixos">
-      <div class="ticket ticket--status">
+      <div class="ticket">
         <div class="ticket__status">Заявка отправлена</div>
-      </div>
-      <div class="ticket ticket--agency">
-        <div class="ticket__row">
-          <div class="k">Агентство</div>
-          <div class="v">Anextour</div>
+        <div class="ticket__agency">
+          <div class="ticket__row">
+            <div class="k">Агентство</div>
+            <div class="v">Anextour</div>
+          </div>
+          <button class="ticket__again">Зарегистрировать ещё</button>
         </div>
-        <button class="ticket__again">Зарегистрировать ещё</button>
       </div>
       <div class="ticket__check">
         <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19 6.5" stroke="#3a63f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
