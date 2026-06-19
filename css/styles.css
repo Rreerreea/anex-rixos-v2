@@ -223,7 +223,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 .faq__answer a{color:var(--blue)}
 
 /* ============ ФИНАЛЬНАЯ ФОРМА ============ */
-.reg{padding:96px 0}
+.reg{padding:96px 0 40px}
 .reg__card{position:relative;max-width:1340px;margin:0 auto;background:var(--blue);border-radius:var(--r-24);
   overflow:hidden;display:grid;grid-template-columns:599px 1fr;gap:46px;padding:56px;align-items:stretch}
 .reg__visual{background:#fff;border-radius:var(--r-16,16px);overflow:hidden;position:relative;min-height:723px}
@@ -240,7 +240,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 .reg__submit{margin-top:6px;width:100%}
 
 /* ============ ФУТЕР ============ */
-.footer{padding:60px 0 48px;text-align:center}
+.footer{padding:40px 0 48px;text-align:center}
 .footer__logo{width:150px;margin:0 auto 22px}
 .footer__links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
 .footer__links a{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:var(--black)}
