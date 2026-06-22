@@ -294,8 +294,9 @@ button{font-family:inherit;cursor:pointer;border:0}
   .hero__cta .btn{min-width:0;width:100%;max-width:300px;height:56px;font-size:16px}
   .hero__phone{width:66%;max-width:260px;height:auto;bottom:-340px}
   .badge{font-size:12px;padding:6px 10px}
-  .badge--left{left:8px;bottom:206px}
-  .badge--right{right:8px;bottom:136px}
+  /* опускаем бейджи на айфон, ниже таймера (иначе налезают на пилюлю отсчёта) */
+  .badge--left{left:8px;bottom:118px}
+  .badge--right{right:8px;bottom:54px}
   /* карточки призов — в ширину экрана, пропорции сохраняем */
   .prize{width:100%;max-width:430px;height:auto;aspect-ratio:441/560}
   .prize__t{font-size:26px;line-height:30px;top:32px;left:24px}
