@@ -260,6 +260,14 @@ button{font-family:inherit;cursor:pointer;border:0}
 }
 
 /* ============ АДАПТИВ ============ */
+/* веер призов раскрыт на 1191px (441×3 − 66×2). Контейнер уже его, а body{overflow-x:hidden}
+   молча режет крайние карточки на планшете (iPad Pro 12.9 портрет 1024, ландшафт 1080–1180,
+   окно браузера < 1190). Сворачиваем в колонку раньше общего планшетного брейка — карточка
+   сохраняет родной размер 441×577, под который рассчитаны px-позиции внутренних медиа. */
+@media (max-width:1200px){
+  .prizes .fan{flex-direction:column;align-items:center;gap:24px}
+  .prize{transform:none!important;margin:0!important}
+}
 @media (max-width:1080px){
   .reg__card{grid-template-columns:1fr;gap:32px;padding:32px}
   .reg__visual{min-height:360px}
@@ -268,8 +276,6 @@ button{font-family:inherit;cursor:pointer;border:0}
 }
 @media (max-width:920px){
   .section{padding:64px 0}
-  .prizes .fan{flex-direction:column;align-items:center;gap:24px}
-  .prize{transform:none!important;margin:0!important}
   .weeks{grid-template-columns:repeat(2,1fr)}
   .await .stage{height:auto;padding-bottom:24px}
   .cal{position:static;width:auto;max-width:460px;margin:24px auto 0;transform:none}
