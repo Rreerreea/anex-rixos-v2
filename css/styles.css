@@ -296,6 +296,10 @@ button{font-family:inherit;cursor:pointer;border:0}
   .hero__sub{font-size:14px;line-height:20px;margin-top:14px}
   .hero__cta{margin-top:24px}
   .hero__cta .btn{min-width:0;width:100%;max-width:300px;height:56px;font-size:16px}
+  /* плашка таймера компактнее (десктопные 277px/18px на мобиле великоваты) */
+  .hero__timer{width:252px;padding:11px 12px 4px;margin-top:-14px;gap:6px}
+  .hero__timer .lbl{font-size:8px}
+  .hero__timer .clock{font-size:15px}
   .hero__phone{width:66%;max-width:260px;height:auto;bottom:-340px}
   .badge{font-size:12px;padding:6px 10px}
   /* опускаем бейджи на айфон, ниже таймера (иначе налезают на пилюлю отсчёта) */
