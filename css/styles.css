@@ -287,6 +287,10 @@ button{font-family:inherit;cursor:pointer;border:0}
   .sec-sub{font-size:14px;line-height:20px;max-width:100%!important}
   /* hero */
   .hero{min-height:620px}
+  /* лого-локап мельче — на десктопе 127/134px занимали бы пол-экрана */
+  .hero__lockup{gap:10px;margin-top:28px}
+  .hero__lockup .anex{width:90px}
+  .hero__lockup .rixos{width:96px}
   .hero__content{padding-top:34px}
   .hero h1{font-size:clamp(26px,7.5vw,36px);line-height:1.05}
   .hero__sub{font-size:14px;line-height:20px;margin-top:14px}
