@@ -280,18 +280,21 @@ button{font-family:inherit;cursor:pointer;border:0}
 }
 @media (max-width:560px){
   .container{padding:0 16px}
-  /* широкий гротеск ужимаем, чтобы заголовки не вылезали за экран */
-  .display{font-stretch:112%;letter-spacing:0}
-  .sec-title{font-size:clamp(25px,7.5vw,34px)}
+  /* на узком — нормальная ширина гротеска (у вариативного шрифта ширину задаёт 'wdth', не font-stretch) */
+  .display{font-variation-settings:'wght' 800,'wdth' 100,'opsz' 144,'GRAD' 40;font-stretch:100%;letter-spacing:-.3px}
+  .sec-title{font-size:clamp(22px,5.8vw,30px);line-height:1.06;overflow-wrap:break-word}
+  .sec-sub{font-size:14px;line-height:20px}
   /* hero */
-  .hero{min-height:660px}
-  .hero__content{padding-top:36px}
-  .hero h1{font-size:clamp(30px,9vw,42px);line-height:1.03}
-  .hero__sub{font-size:15px;line-height:21px}
-  .hero__phone{width:80%;max-width:300px;height:auto;bottom:-320px}
-  .badge{font-size:12px;padding:6px 11px}
-  .badge--left{left:10px;bottom:236px}
-  .badge--right{right:10px;bottom:158px}
+  .hero{min-height:620px}
+  .hero__content{padding-top:34px}
+  .hero h1{font-size:clamp(26px,7.5vw,36px);line-height:1.05}
+  .hero__sub{font-size:14px;line-height:20px;margin-top:14px}
+  .hero__cta{margin-top:24px}
+  .hero__cta .btn{min-width:0;width:100%;max-width:300px;height:56px;font-size:16px}
+  .hero__phone{width:66%;max-width:260px;height:auto;bottom:-340px}
+  .badge{font-size:12px;padding:6px 10px}
+  .badge--left{left:8px;bottom:206px}
+  .badge--right{right:8px;bottom:136px}
   /* карточки призов — в ширину экрана, пропорции сохраняем */
   .prize{width:100%;max-width:430px;height:auto;aspect-ratio:441/560}
   .prize__t{font-size:26px;line-height:30px;top:32px;left:24px}
