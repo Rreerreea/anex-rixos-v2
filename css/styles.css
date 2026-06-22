@@ -279,10 +279,26 @@ button{font-family:inherit;cursor:pointer;border:0}
   .ticket__check{left:auto;right:24px}
 }
 @media (max-width:560px){
-  .hero{min-height:760px}
-  .hero__phone{height:440px}
-  .badge{font-size:15px;padding:8px 13px}
-  .badge--left{bottom:300px}.badge--right{bottom:210px}
+  .container{padding:0 16px}
+  /* широкий гротеск ужимаем, чтобы заголовки не вылезали за экран */
+  .display{font-stretch:112%;letter-spacing:0}
+  .sec-title{font-size:clamp(25px,7.5vw,34px)}
+  /* hero */
+  .hero{min-height:660px}
+  .hero__content{padding-top:36px}
+  .hero h1{font-size:clamp(30px,9vw,42px);line-height:1.03}
+  .hero__sub{font-size:15px;line-height:21px}
+  .hero__phone{width:80%;max-width:300px;height:auto;bottom:-320px}
+  .badge{font-size:12px;padding:6px 11px}
+  .badge--left{left:10px;bottom:236px}
+  .badge--right{right:10px;bottom:158px}
+  /* карточки призов — в ширину экрана, пропорции сохраняем */
+  .prize{width:100%;max-width:430px;height:auto;aspect-ratio:441/560}
+  .prize__t{font-size:26px;line-height:30px;top:32px;left:24px}
+  .prize__d{font-size:15px;line-height:21px;top:74px;left:24px;max-width:80%}
+  /* итоги / финальная форма / медиа */
   .weeks{grid-template-columns:1fr 1fr}
-  .media-card{height:300px}
+  .media-card{height:280px}
+  .reg__card{padding:28px 20px}
+  .reg__title{font-size:32px}
 }
