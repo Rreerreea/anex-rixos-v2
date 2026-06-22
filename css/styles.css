@@ -291,8 +291,8 @@ button{font-family:inherit;cursor:pointer;border:0}
   .hero__lockup{gap:10px;margin-top:28px}
   .hero__lockup .anex{width:90px}
   .hero__lockup .rixos{width:96px}
-  .hero__content{padding-top:34px}
-  .hero h1{font-size:clamp(26px,7.5vw,36px);line-height:1.05}
+  .hero__content{padding:34px 14px 0}
+  .hero h1{font-size:clamp(33px,10.4vw,46px);line-height:1.04}
   .hero__sub{font-size:14px;line-height:20px;margin-top:14px}
   .hero__cta{margin-top:24px}
   .hero__cta .btn{min-width:0;width:100%;max-width:300px;height:56px;font-size:16px}
