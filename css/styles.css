@@ -282,8 +282,9 @@ button{font-family:inherit;cursor:pointer;border:0}
   .container{padding:0 16px}
   /* на узком — нормальная ширина гротеска (у вариативного шрифта ширину задаёт 'wdth', не font-stretch) */
   .display{font-variation-settings:'wght' 800,'wdth' 100,'opsz' 144,'GRAD' 40;font-stretch:100%;letter-spacing:-.3px}
-  .sec-title{font-size:clamp(22px,5.8vw,30px);line-height:1.06;overflow-wrap:break-word}
-  .sec-sub{font-size:14px;line-height:20px}
+  .sec-title{font-size:clamp(22px,5.8vw,30px);line-height:1.06;overflow-wrap:break-word;max-width:100%!important}
+  /* inline max-width у подзаголовков шире экрана — перебиваем, иначе текст вылезает */
+  .sec-sub{font-size:14px;line-height:20px;max-width:100%!important}
   /* hero */
   .hero{min-height:620px}
   .hero__content{padding-top:34px}
