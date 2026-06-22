@@ -1,6 +1,6 @@
 /*
  * ANEX × Rixos (v2) — поведение лендинга.
- * Блоки: обратный отсчёт до пятницы · календарь июля · GSAP-анимации (hero, reveal, параллакс) · confetti.
+ * Блоки: обратный отсчет до пятницы · календарь июля · GSAP-анимации (hero, reveal, параллакс) · confetti.
  * Зависимости (CDN, подключены в index.html): GSAP + ScrollTrigger, canvas-confetti.
  */
 
@@ -32,7 +32,7 @@
       var now=new Date();
       if(now<start) return {d:start,l:'До старта конкурса'};
       for(var i=0;i<fridays.length;i++) if(fridays[i]>now) return {d:fridays[i],l:'До ближайшего розыгрыша'};
-      return {d:fridays[fridays.length-1],l:'Конкурс завершён'};
+      return {d:fridays[fridays.length-1],l:'Конкурс завершен'};
     }
     function tick(){
       var t=target(), diff=Math.max(0,t.d-new Date());
@@ -110,7 +110,7 @@
   gsap.to('.badge--left',{y:-11,rotation:'-=2.5',duration:2.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:2.7});
   gsap.to('.badge--right',{y:-9,rotation:'+=2.5',duration:2.9,ease:'sine.inOut',yoyo:true,repeat:-1,delay:2.7});
 
-  // HERO scroll-driven: айфон уезжает вверх+растёт+поворот, текст уходит, фон parallax
+  // HERO scroll-driven: айфон уезжает вверх+растет+поворот, текст уходит, фон parallax
   gsap.to('#heroPhone',{yPercent:-12,scale:1.03,rotation:2,ease:'none',
     scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
   gsap.to('.hero__content',{y:-80,opacity:.2,ease:'none',
@@ -127,7 +127,7 @@
   gsap.from('.prize',{opacity:0,duration:1,stagger:.15,ease:'power2.out',
     scrollTrigger:{trigger:'.fan',start:'top 82%',once:true}});
 
-  // CLIP-REVEAL больших фото (шторка снизу + лёгкий зум)
+  // CLIP-REVEAL больших фото (шторка снизу + легкий зум)
   gsap.utils.toArray('[data-reveal-img]').forEach(function(card){
     var img=card.querySelector('img.bg');
     gsap.fromTo(card,{opacity:0,scale:.94},{opacity:1,scale:1,duration:1.1,ease:'power3.out',

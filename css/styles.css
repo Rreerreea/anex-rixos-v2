@@ -69,7 +69,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 .sec-head__group{display:flex;flex-direction:column;align-items:center;gap:28px}
 .sec-title{font-size:clamp(36px,5vw,60px);color:var(--black)}
 .sec-title .blue{color:var(--blue)}
-.sec-sub{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:rgba(0,0,0,.6);max-width:560px}
+.sec-sub{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:rgba(0,0,0,.78);max-width:560px}
 
 /* ============ КНОПКИ ============ */
 .btn{
@@ -135,7 +135,7 @@ button{font-family:inherit;cursor:pointer;border:0}
 .prize{position:relative;width:441px;height:577px;flex:0 0 auto;
   background:var(--grey-bg);border-radius:var(--r-20);overflow:hidden;box-shadow:var(--shadow-card)}
 .prize__t{position:absolute;left:31px;top:46px;z-index:2;font-family:var(--ff-text);font-weight:700;font-size:32px;line-height:35px;color:var(--black)}
-.prize__d{position:absolute;left:31px;top:96px;z-index:2;font-family:var(--ff-text);font-weight:400;font-size:18px;line-height:24px;color:var(--black);max-width:372px}
+.prize__d{position:absolute;left:31px;top:96px;z-index:2;font-family:var(--ff-text);font-weight:400;font-size:18px;line-height:24px;color:rgba(0,0,0,.6);max-width:372px}
 .prize__media{position:absolute;left:0;right:0;bottom:0;top:0;z-index:1}
 .prize__media img{position:absolute}
 /* лесенка по высоте: левая ниже всех → центр выше → правая выше всех */
@@ -280,13 +280,23 @@ button{font-family:inherit;cursor:pointer;border:0}
 }
 @media (max-width:560px){
   .container{padding:0 16px}
+  .section{padding:80px 0}
+  /* Бронируй/Регистрируй/Ожидай — шаги одного блока, между ними отступ меньше */
+  .book{padding-bottom:40px}
+  .register{padding:40px 0}
+  .await{padding-top:40px}
   /* на узком — нормальная ширина гротеска (у вариативного шрифта ширину задаёт 'wdth', не font-stretch) */
   .display{font-variation-settings:'wght' 800,'wdth' 100,'opsz' 144,'GRAD' 40;font-stretch:100%;letter-spacing:-.3px}
-  .sec-title{font-size:clamp(22px,5.8vw,30px);line-height:1.06;overflow-wrap:break-word;max-width:100%!important}
+  .sec-title{font-size:clamp(38px,10.4vw,46px);line-height:1.04;overflow-wrap:break-word;max-width:100%!important}
   /* inline max-width у подзаголовков шире экрана — перебиваем, иначе текст вылезает */
-  .sec-sub{font-size:14px;line-height:20px;max-width:100%!important}
+  .sec-sub{font-size:15px;line-height:21px;max-width:100%!important}
+  /* меньше отступ заголовок→подзаголовок на мобиле */
+  .sec-head{gap:20px}
+  .sec-head__group{gap:20px}
+  .sec-head .eyebrow{font-size:16px;line-height:22px}
+  .book .sec-head{gap:10px}
   /* hero */
-  .hero{min-height:620px}
+  .hero{min-height:560px}
   /* лого-локап мельче — на десктопе 127/134px занимали бы пол-экрана */
   .hero__lockup{gap:10px;margin-top:28px}
   .hero__lockup .anex{width:90px}
@@ -294,24 +304,33 @@ button{font-family:inherit;cursor:pointer;border:0}
   .hero__content{padding:20px 14px 0}
   .hero h1{font-size:clamp(33px,10.4vw,46px);line-height:1.04}
   .hero__sub{font-size:14px;line-height:20px;margin-top:14px}
-  .hero__cta{margin-top:24px}
-  .hero__cta .btn{min-width:0;width:100%;max-width:300px;height:56px;font-size:16px}
+  .hero__cta{margin-top:16px;width:100%}
+  .hero__cta .btn{min-width:0;width:100%;max-width:310px;height:56px;font-size:16px}
   /* плашка таймера компактнее (десктопные 277px/18px на мобиле великоваты) */
-  .hero__timer{width:252px;padding:11px 12px 4px;margin-top:-14px;gap:6px}
-  .hero__timer .lbl{font-size:8px}
-  .hero__timer .clock{font-size:15px}
-  .hero__phone{width:66%;max-width:260px;height:auto;bottom:-340px}
+  .hero__timer{width:228px;padding:9px 11px 4px;margin-top:-6px;gap:6px;border-radius:10px}
+  .hero__timer .lbl{font-size:8.5px}
+  .hero__timer .clock{font-size:13.5px}
+  .hero__phone{width:92%;max-width:375px;height:auto;bottom:-450px}
   .badge{font-size:12px;padding:6px 10px}
   /* опускаем бейджи на айфон, ниже таймера (иначе налезают на пилюлю отсчёта) */
-  .badge--left{left:8px;bottom:118px}
-  .badge--right{right:8px;bottom:54px}
+  .badge--left{left:8px;bottom:110px}
+  .badge--right{right:8px;bottom:48px}
+  /* единый отступ заголовок→контент во всех секциях на мобиле */
+  .prizes .fan,.media-card,.await .stage,.weeks,.faq__list{margin-top:40px}
   /* карточки призов — в ширину экрана, пропорции сохраняем */
-  .prize{width:100%;max-width:430px;height:auto;aspect-ratio:441/560}
+  .prize{width:100%;max-width:430px;height:auto;aspect-ratio:441/577}
   .prize__t{font-size:26px;line-height:30px;top:32px;left:24px}
   .prize__d{font-size:15px;line-height:21px;top:74px;left:24px;max-width:80%}
+  /* медиа карточек — позиции в % (десктопные px ехали на резиновой карточке) */
+  .prize--work .pyr{left:-3%}
+  .prize--work .plane{left:44.9%;top:45.5%;width:13.6%}
+  .prize--work .trail{left:-34.7%;top:36.5%;width:81.9%}
+  .prize--phone .ph{right:-2%;bottom:-3.5%;width:124%;transform:rotate(-6deg)}
   /* итоги / финальная форма / медиа */
   .weeks{grid-template-columns:1fr 1fr}
   .media-card{height:280px}
   .reg__card{padding:28px 20px}
   .reg__title{font-size:32px}
+  /* CTA «Зарегистрировать заявку» — во всю ширину по сетке контейнера */
+  .register__cta{width:100%}
 }
