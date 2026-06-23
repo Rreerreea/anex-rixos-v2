@@ -193,19 +193,42 @@ button{font-family:inherit;cursor:pointer;border:0}
 .cal__grid .d{position:relative;font-family:var(--ff-text);font-weight:700;font-size:18px;color:#000;text-align:center;
   aspect-ratio:1;display:flex;align-items:center;justify-content:center}
 .cal__grid .d.empty{visibility:hidden}
-.cal__grid .d.fri::before{content:"";position:absolute;inset:-6px -2px;
+.cal__grid .d.draw::before{content:"";position:absolute;inset:-6px -2px;
   background:url('../assets/figma/circle-1.svg') center/contain no-repeat}
 
-/* ============ ИТОГИ — недели ============ */
-.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:64px}
+/* ============ ИТОГИ — образец + сетка недель ============ */
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
 .week{position:relative;background:var(--grey-bg);border-radius:var(--r-20);padding:18px 12px;
   display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
-.week .wk{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:#000}
-.week .dt{font-family:var(--ff-text);font-weight:700;font-size:24px;line-height:28px;color:var(--ink)}
+.week .wk{font-family:var(--ff-text);font-weight:400;font-size:16px;line-height:22px;color:var(--grey-95)}
+.week .dt{font-family:var(--ff-num);font-weight:800;font-size:26px;line-height:1;color:var(--ink)}
+.week .br{font-family:var(--ff-text);font-weight:400;font-size:12.5px;line-height:16px;color:var(--grey-sub);margin-top:4px}
 .week.next{background:var(--blue-10)}
 .week.next::before{content:"ближайший";position:absolute;top:-14px;left:50%;transform:translateX(-50%);
   background:var(--blue);color:#fff;font-family:var(--ff-num);font-weight:800;font-size:12px;letter-spacing:.7px;
   text-transform:uppercase;padding:5px 14px;border-radius:14px;white-space:nowrap}
+
+/* образец итогов проведённого розыгрыша (после старта — реальные данные/протокол Randomus) */
+.result-demo{margin-top:56px;display:flex;flex-direction:column;gap:14px}
+.result-demo__cap{text-align:center;font-family:var(--ff-text);font-weight:400;font-size:15px;color:var(--grey-95)}
+.result{width:100%;background:#fff;border:1px solid #eceef2;border-radius:var(--r-24);
+  box-shadow:var(--shadow-card);padding:28px 32px;display:flex;flex-direction:column;gap:16px}
+.result__top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.result__badge{display:inline-flex;align-items:center;gap:6px;background:#e8f6ec;color:#1b9e4b;
+  font-family:var(--ff-text);font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px}
+.result__badge::before{content:"✓";font-weight:800}
+.result__date{font-family:var(--ff-text);font-weight:700;font-size:16px;color:var(--ink)}
+.result__k{font-family:var(--ff-text);font-weight:400;font-size:14px;color:var(--grey-95)}
+.result__wins{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2px}
+.win{background:var(--grey-bg);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:2px}
+.win__prize{font-family:var(--ff-text);font-weight:700;font-size:12px;color:var(--blue);text-transform:uppercase;letter-spacing:.5px}
+.win__name{font-family:var(--ff-text);font-weight:700;font-size:18px;color:var(--ink);margin-top:6px}
+.win__ag{font-family:var(--ff-text);font-weight:400;font-size:14px;color:var(--grey-100)}
+.win__num{font-family:var(--ff-num);font-weight:700;font-size:12.5px;color:var(--grey-95);margin-top:6px}
+.result__link{align-self:flex-start;color:var(--blue);font-family:var(--ff-text);font-weight:500;font-size:15px}
+.result__link:hover{text-decoration:underline}
+.results__sub{display:block;text-align:center;margin-top:56px;
+  font-family:var(--ff-text);font-weight:600;font-size:20px;color:var(--black)}
 
 /* ============ FAQ ============ */
 .faq__list{margin-top:64px;border-top:1px solid #eceef2}
@@ -225,19 +248,63 @@ button{font-family:inherit;cursor:pointer;border:0}
 /* ============ ФИНАЛЬНАЯ ФОРМА ============ */
 .reg{padding:96px 0 40px}
 .reg__card{position:relative;max-width:1340px;margin:0 auto;background:var(--blue);border-radius:var(--r-24);
-  overflow:hidden;display:grid;grid-template-columns:599px 1fr;gap:46px;padding:56px;align-items:stretch}
+  overflow:hidden;display:grid;grid-template-columns:585px 1fr;gap:46px;padding:56px;align-items:stretch}
 .reg__visual{background:#fff;border-radius:var(--r-16,16px);overflow:hidden;position:relative;min-height:723px}
 /* айфон-спинка: точная позиция из Figma (бокс 527×569 @ left:0 top:154 в визуале 599×723) */
 .reg__visual img{position:absolute;left:0;top:154px;width:527px;height:569px;max-width:none}
-.reg__form{display:flex;flex-direction:column;gap:24px;padding-top:8px}
+.reg__form{display:flex;flex-direction:column;gap:24px;padding-top:8px;margin-left:-12px}
 .reg__title{color:#fff;font-size:clamp(38px,4.4vw,60px)}
 .reg__sub{color:#fff;font-family:var(--ff-text);font-weight:500;font-size:16px;line-height:22px;opacity:.92}
-.reg__fields{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.reg__fields{display:flex;flex-direction:column;gap:10px;margin-top:auto}
 .field{background:#fff;border:1px solid rgba(101,92,78,.1);border-radius:var(--r-8);padding:12px;display:flex;flex-direction:column;gap:4px}
-.field label{font-family:var(--ff-text);font-weight:500;font-size:12px;line-height:18px;color:#0d0d0d;opacity:.5}
+.field>span{font-family:var(--ff-text);font-weight:500;font-size:12px;line-height:18px;color:#0d0d0d;opacity:.5}
+.field>span em{font-style:normal}
 .field input{border:0;outline:0;background:transparent;font-family:var(--ff-text);font-weight:700;font-size:20px;line-height:24px;color:#000;width:100%}
 .field input::placeholder{color:#000;opacity:.35}
+/* dropdown отелей: своя стрелка, плейсхолдер серым пока не выбрано */
+.field--select{position:relative}
+/* стрелка по центру всей плашки поля (а не только строки select) */
+.field--select::after{content:"";position:absolute;right:16px;top:50%;width:12px;height:8px;transform:translateY(-50%);pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+/* кастомный dropdown отелей — единый вид открытого списка на всех ОС */
+.cselect{position:relative}
+.cselect__trigger{width:100%;border:0;background:transparent;padding:0 24px 0 0;text-align:left;cursor:pointer;
+  font-family:var(--ff-text);font-weight:700;font-size:20px;line-height:24px;color:#000}
+.cselect__value{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cselect__value--ph{font-weight:500;color:rgba(0,0,0,.35)}
+.cselect__list{position:absolute;left:-12px;right:-12px;top:calc(100% + 14px);z-index:30;
+  background:#fff;border-radius:14px;box-shadow:0 18px 44px rgba(20,30,60,.20);
+  list-style:none;padding:6px;margin:0;max-height:288px;overflow-y:auto;display:none}
+.cselect.is-open .cselect__list{display:block}
+.cselect__opt{padding:11px 14px;border-radius:9px;cursor:pointer;
+  font-family:var(--ff-text);font-weight:500;font-size:15px;line-height:20px;color:var(--ink)}
+.cselect__opt:hover{background:var(--grey-bg)}
+.cselect__opt[aria-selected="true"]{color:var(--blue);font-weight:700}
+/* поле «отель» не выбрано при отправке */
+.field--error{border-color:var(--red)}
+/* чекбоксы согласия (на синей карточке) */
+.reg__consents{display:flex;flex-direction:column;gap:10px}
+.check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.check input{flex:0 0 auto;width:18px;height:18px;margin-top:1px;accent-color:#fff;cursor:pointer}
+.check span{font-family:var(--ff-text);font-weight:400;font-size:13px;line-height:18px;color:#fff;opacity:.92}
+.check a{color:#fff;text-decoration:underline}
 .reg__submit{margin-top:6px;width:100%}
+
+/* состояния формы после отправки (C7): успех / не подходит / дубль */
+.form-status{display:none;flex-direction:column;align-items:flex-start;gap:8px}
+.reg__form.is-result>*{display:none}
+.reg__form.is-result>.form-status{display:flex}
+.form-status__ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:800;color:#fff;flex:0 0 auto}
+/* размеры переиспользованы из reg__title / reg__sub */
+.form-status__title{color:#fff;font-family:var(--ff-display);font-weight:800;font-variation-settings:'wght' 800,'wdth' 143,'opsz' 144,'GRAD' 40;font-size:clamp(38px,4.4vw,60px);line-height:.9;letter-spacing:-.5px;margin-top:6px}
+.form-status__text{color:#fff;opacity:.92;font-family:var(--ff-text);font-weight:500;font-size:16px;line-height:22px;margin-top:12px}
+.form-status__btn{margin-top:14px;background:#fff;color:var(--blue);border-radius:var(--r-12);height:52px;padding:0 28px;
+  font-family:var(--ff-text);font-weight:600;font-size:16px;cursor:pointer;transition:filter .2s}
+.form-status__btn:hover{filter:brightness(.96)}
+.form-status.is-success .form-status__ic{background:#1b9e4b}
+.form-status.is-reject .form-status__ic{background:var(--red)}
+.form-status.is-dup .form-status__ic{background:#f5a623}
 
 /* ============ ФУТЕР ============ */
 .footer{padding:40px 0 48px;text-align:center}
@@ -334,6 +401,14 @@ button{font-family:inherit;cursor:pointer;border:0}
   .prize--phone .ph{right:-2%;bottom:-3.5%;width:124%;transform:rotate(-6deg)}
   /* итоги / финальная форма / медиа */
   .weeks{grid-template-columns:1fr 1fr;gap:10px}
+  .week .dt{font-size:23px}
+  /* образец итогов — в столбик на мобиле */
+  .result{padding:18px 16px;border-radius:16px}
+  .result__wins{grid-template-columns:1fr;gap:10px}
+  .win{padding:14px 16px}
+  .win__name{font-size:17px}
+  .results__sub{font-size:17px;margin-top:44px}
+  .result-demo{margin-top:44px}
   .media-card{height:auto;aspect-ratio:1.25;border-radius:20px}
   /* плашка лого RIXOS меньше (десктопные 280×98 на мобиле великоваты) */
   .book .plate{width:160px;height:60px}
@@ -363,7 +438,7 @@ button{font-family:inherit;cursor:pointer;border:0}
   .reg__visual{min-height:0;aspect-ratio:599/723}
   .reg__visual img{left:0;top:21.3%;width:88%;height:78.7%;transform:none;max-width:none}
   /* единая шкала скруглений (мобайл): мелкие плашки → 12 */
-  .book .plate,.ticket,.ticket__again,.ticket__check,.week.next::before{border-radius:12px}
+  .book .plate,.ticket,.ticket__again,.ticket__check{border-radius:12px}
   /* CTA «Зарегистрировать заявку» — во всю ширину, отступ до подзаголовка меньше */
   .register__cta{width:100%;margin-top:0}
   .register .sec-head{gap:14px}

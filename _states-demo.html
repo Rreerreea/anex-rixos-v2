@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Состояния формы — демо</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Roboto:wght@400;500;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+body{background:#eef1f6;padding:32px 20px;font-family:'Roboto',sans-serif}
+h1{text-align:center;font-family:'Roboto Flex',sans-serif;font-weight:800;font-size:28px;margin-bottom:6px}
+.sub{text-align:center;color:#5b7596;margin-bottom:28px;font-size:15px}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1080px;margin:0 auto}
+.demo-lbl{font-weight:600;color:#444;margin-bottom:8px;font-size:14px}
+.demo-cell{background:var(--blue);border-radius:24px;padding:36px 34px;min-height:260px;display:flex}
+.demo-cell .form-status{display:flex;margin:0}
+@media(max-width:720px){.demo-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>Состояния формы после «Отправить»</h1>
+<p class="sub">4 состояния (демо). Заголовок/подзаголовок/кнопка — сверху.</p>
+<div class="demo-grid">
+
+  <div>
+    <div class="demo-lbl">1 — Успех (любой обычный номер)</div>
+    <div class="demo-cell">
+      <div class="form-status is-success">
+        <span class="form-status__ic">✓</span>
+        <div class="form-status__body">
+          <h3 class="form-status__title">Заявка принята</h3>
+          <p class="form-status__text">Номер 12345 участвует в ближайшем розыгрыше. Победителей объявим в понедельник — следите за блоком «Итоги».</p>
+        </div>
+        <button class="form-status__btn">Зарегистрировать ещё</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="demo-lbl">2 — Заявка не подходит под условия</div>
+    <div class="demo-cell">
+      <div class="form-status is-reject">
+        <span class="form-status__ic">✕</span>
+        <div class="form-status__body">
+          <h3 class="form-status__title">Заявка не подходит под условия</h3>
+          <p class="form-status__text">В розыгрыше участвуют брони Rixos Египет от 5 ночей, оплаченные по договору, от независимых агентств. Проверьте параметры брони.</p>
+        </div>
+        <button class="form-status__btn">Ввести другой номер</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="demo-lbl">3 — Повтор в рамках этой же недели</div>
+    <div class="demo-cell">
+      <div class="form-status is-dup">
+        <span class="form-status__ic">!</span>
+        <div class="form-status__body">
+          <h3 class="form-status__title">Заявка уже зарегистрирована</h3>
+          <p class="form-status__text">Номер 12345 уже участвует в розыгрыше этой недели. Каждая бронь — отдельный билет, зарегистрируйте другую заявку.</p>
+        </div>
+        <button class="form-status__btn">Ввести другой номер</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="demo-lbl">4 — Повтор заявки с прошлой недели</div>
+    <div class="demo-cell">
+      <div class="form-status is-dup">
+        <span class="form-status__ic">!</span>
+        <div class="form-status__body">
+          <h3 class="form-status__title">Заявка из прошлого периода</h3>
+          <p class="form-status__text">Номер 12345 уже участвовал в розыгрыше прошлой недели. Для нового розыгрыша внесите бронь текущей недели.</p>
+        </div>
+        <button class="form-status__btn">Ввести другой номер</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
